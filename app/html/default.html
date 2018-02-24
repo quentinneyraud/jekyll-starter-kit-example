@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% include head.html %}
+  <link rel="stylesheet" href="../styles/main.scss">
+</head>
+
+<body>
+
+{% if file_exists {{ src/_includes/svg.html }} %}
+<div class="svg-list">
+{% include svg.html %}
+</div>
+{% endif %}
+
+{% include header.html %}
+
+<main id="barba-wrapper">
+  {{ content }}
+</main>
+
+<script src="../scripts/main.js"></script>
+</body>
+</html>
