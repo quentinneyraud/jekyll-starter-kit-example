@@ -39,8 +39,26 @@ export default class Page {
    * Return
    * @param options contains el (<a> element) and data attributes
    */
-  getTransition (options) {}
-
+  getTransition (options) {
+    return {
+      start: function () {
+        this.newContainerLoading
+          .then(this.transition.bind(this))
+      },
+      transition: function () {
+        new TimelineMax()
+          .to('.overflow-transition', 0.5, {width: window.innerWidth})
+          .set('.overflow-transition', {left: 0})
+          .set(this.oldContainer, {autoAlpha: 0})
+          .set(this.newContainer, {autoAlpha: 1})
+          .to('.overflow-transition', 0.5, {width: 0})
+          .set('.overflow-transition', {right: 0, left: 'auto'})
+          .call(() => {
+            this.done()
+          })
+      }
+    }
+  }
   /**
    * Fill $els with body and window elements
    * called on enter

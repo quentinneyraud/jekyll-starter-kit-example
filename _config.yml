@@ -3,6 +3,7 @@ title: Jekyll starter
 baseurl: "/"
 baseurl_image: "/static/img/"
 url: "http://jekyll-starter.quentinneyraud.fr"
+encoding: utf-8
 
 # SEO & head
 twitter_username: "@quentin_neyraud"

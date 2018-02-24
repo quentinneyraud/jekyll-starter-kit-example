@@ -8,9 +8,10 @@
 
 <body>
 
-{% if file_exists {{ src/_includes/svg.html }} %}
+{% capture svgFileExists %}{% file_exists _includes/svg.html %}{% endcapture %}
+{% if svgFileExists %}
 <div class="svg-list">
-{% include svg.html %}
+  {% include svg.html %}
 </div>
 {% endif %}
 
@@ -18,6 +19,7 @@
 
 <main id="barba-wrapper">
   {{ content }}
+  <div class="overflow-transition"></div>
 </main>
 
 <script src="../scripts/main.js"></script>

@@ -1,4 +1,4 @@
-import Barba from 'barba.js'
+import Barba from '../../node_modules/barba.js'
 
 const DEFAULT_OPTIONS = {
   cache: false,
@@ -113,8 +113,11 @@ export default class BarbaWrapper {
    * Add active class on all links matching current url
    */
   onBarbaNewPageReady () {
+    const sanitizePathname = pathname => pathname.split('/').filter(w => w).join('/')
+    const currentPathname = sanitizePathname(window.location.pathname)
+
     this.navLinks.forEach((link) => {
-      if (link.getAttribute('href') === window.location.pathname) {
+      if (sanitizePathname(link.getAttribute('href')) === currentPathname) {
         link.classList.add('active')
       } else {
         link.classList.remove('active')

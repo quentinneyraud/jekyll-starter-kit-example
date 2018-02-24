@@ -2,6 +2,7 @@ const Bundler = require('parcel-bundler')
 const path = require('path')
 const fs = require('fs')
 const del = require('del')
+// const pl = require('parcel-plugin-eslint')
 
 const env = process.env.NODE_ENV || 'development'
 const entryPoint = path.join(__dirname, '../app/html/default.html')
@@ -29,6 +30,10 @@ const options = {
 }
 
 const bundler = new Bundler(entryPoint, options)
+bundler.logger = {
+  clear: () => {},
+  write: () => {}
+}
 
 /**
  Assets
@@ -84,5 +89,7 @@ bundler.on('bundled', (bundle) => {
   })
 })
 
+
 createEmptyAssetsFolder()
+// pl(bundler)
 bundler.bundle()
