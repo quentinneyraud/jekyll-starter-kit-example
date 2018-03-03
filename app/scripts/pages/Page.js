@@ -24,7 +24,8 @@ export default class Page {
     this.initializeEvents()
   }
 
-  onEnterCompleted () {}
+  onEnterCompleted () {
+  }
 
   onLeave () {
     this.active = false
@@ -59,6 +60,7 @@ export default class Page {
       }
     }
   }
+
   /**
    * Fill $els with body and window elements
    * called on enter
@@ -74,7 +76,8 @@ export default class Page {
    * Initialize all events
    * called on enter, after initializeElements()
    */
-  initializeEvents () {}
+  initializeEvents () {
+  }
 
   /**
    * Add interval and timeout ids, they will be cleared on leave
